@@ -26,8 +26,7 @@ class Seccion(models.Model):
 class SecAcc(models.Model):
     Seccion = models.ForeignKey(Seccion, on_delete=models.CASCADE)
     Acceso = models.ForeignKey(Acceso, on_delete=models.CASCADE)
-    class Meta:
-        verbose_name_plural = "Secc_Acc"
+    
 
 class Area(models.Model):
     Area = models.CharField(max_length=200, verbose_name='Area',default='')
@@ -56,7 +55,7 @@ class persona(models.Model):
     apellido = models.CharField(max_length=200, verbose_name='Apellido', default='')
     usr = models.CharField(max_length=10, verbose_name='Usuario', default='')
     cargo = models.ForeignKey(cargo, on_delete=models.CASCADE)
-    fechaIngreso = models.DateField(verbose_name='Fecha de Ingreso')
+    fechaIngreso = models.DateField(verbose_name='Fecha de Ingreso', blank=True, null=True)
     fechaRetiro = models.DateField(verbose_name='Fecha de Retiro', blank=True, null=True)
 
     def __str__(self):
@@ -68,7 +67,7 @@ class CarAcc(models.Model):
     cargo = models.ForeignKey(cargo, on_delete=models.CASCADE)
     Acceso = models.ForeignKey(Acceso, on_delete=models.CASCADE)
     class Meta:
-        verbose_name_plural = "Secc_Acc"
+        verbose_name_plural = "Accesos"
 
  #   def nombre(self):
  #      return "{}".format(self.Nombre_de_Proyecto)
